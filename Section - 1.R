@@ -13,7 +13,7 @@ new_colnames <- c("Organisation_Name","Sub-building_Name","Building_Name","Numbe
                   "X-Cordinates","Y-Cordinates","Primary_Key")
 
 colnames(my_dataframe) <- new_colnames
-my_dataframe
+colnames(my_dataframe)
 
 #Section -1(c)
 
