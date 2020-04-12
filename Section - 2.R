@@ -13,6 +13,7 @@ nrow(AllNICrimeData)
 
 AllNICrimeData_new = subset(AllNICrimeData, select = -c(Crime.ID, Reported.by, Falls.within, LSOA.code, LSOA.name, Last.outcome.category) )
 AllNICrimeData_new
+str(AllNICrimeData_new)
 
 #section - 2(c)
 
@@ -71,3 +72,16 @@ find_a_town <- function(i) {
 }
 
 find_a_town(toupper(random_crime_sample$Location))
+
+#section -2(g)
+
+random_crime_sample$Context = NULL
+VillageList = read.csv('VillageList.csv',header = TRUE)
+
+add_town_data <- function(i) {
+  random_crime_sample$POPULATION <- VillageList[match(random_crime_sample$City_Town_Village,toupper(VillageList$CITY.TOWN.VILLAGE)),2]
+}
+
+add_town_data(random_crime_sample$City_Town_Village)
+
+write.csv(random_crime_sample,'random_crime_sample.csv',row.names=FALSE)
